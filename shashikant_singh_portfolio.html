@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shashikant Singh — CSE Undergrad & Software Engineer</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            /* Theme 1: Grandmaster Tactical Obsidian (Default) */
+            --bg-primary: #0D1117;
+            --bg-secondary: #161B22;
+            --bg-card: #21262D;
+            --text-main: #F0F6FC;
+            --text-muted: #8B949E;
+            --accent-primary: #10B981; /* Electric Emerald */
+            --accent-secondary: #059669;
+            --accent-gold: #F59E0B; /* Chess Gold */
+            --border-color: rgba(240, 246, 252, 0.12);
+            --border-width: 1px;
+            --box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            --card-radius: 10px;
+            --btn-radius: 6px;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --card-transform: translateY(-4px);
+        }
+
+        /* Theme 2: Matrix Cyber Emerald */
+        [data-theme="matrix"] {
+            --bg-primary: #050e0a;
+            --bg-secondary: #0a1f18;
+            --bg-card: #0f2c22;
+            --text-main: #e2fef4;
+            --text-muted: #62a38a;
+            --accent-primary: #00ff88;
+            --accent-secondary: #00cc6a;
+            --accent-gold: #00e5ff;
+            --border-color: rgba(0, 255, 136, 0.2);
+            --border-width: 1px;
+            --box-shadow: 0 8px 25px rgba(0, 255, 136, 0.15);
+            --card-radius: 8px;
+            --btn-radius: 4px;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --card-transform: translateY(-4px);
+        }
+
+        /* Theme 3: Royal Amber */
+        [data-theme="amber"] {
+            --bg-primary: #121316;
+            --bg-secondary: #1a1c22;
+            --bg-card: #22252e;
+            --text-main: #f3f3f5;
+            --text-muted: #a0a4b0;
+            --accent-primary: #f59e0b;
+            --accent-secondary: #d97706;
+            --accent-gold: #10b981;
+            --border-color: rgba(245, 158, 11, 0.25);
+            --border-width: 1px;
+            --box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+            --card-radius: 12px;
+            --btn-radius: 6px;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --card-transform: translateY(-4px);
+        }
+
+        /* Theme 4: Minimal Paper White */
+        [data-theme="minimal"] {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #f1f5f9;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --accent-primary: #059669;
+            --accent-secondary: #047857;
+            --accent-gold: #d97706;
+            --border-color: rgba(15, 23, 42, 0.15);
+            --border-width: 1px;
+            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            --card-radius: 8px;
+            --btn-radius: 6px;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --card-transform: translateY(-3px);
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .font-heading-custom { font-family: var(--font-heading); }
+        .font-sans-custom { font-family: var(--font-sans); }
+        .font-mono-custom { font-family: var(--font-mono); }
+
+        .bg-custom-primary { background-color: var(--bg-primary); }
+        .bg-custom-secondary { background-color: var(--bg-secondary); }
+        .bg-custom-card { background-color: var(--bg-card); }
+        .text-custom-main { color: var(--text-main); }
+        .text-custom-muted { color: var(--text-muted); }
+        .text-custom-accent { color: var(--accent-primary); }
+        .text-custom-gold { color: var(--accent-gold); }
+        .bg-custom-accent { background-color: var(--accent-primary); }
+        .bg-custom-gold { background-color: var(--accent-gold); }
+
+        .border-custom {
+            border-color: var(--border-color);
+            border-width: var(--border-width);
+            border-style: solid;
+        }
+
+        .custom-card {
+            background-color: var(--bg-card);
+            border-color: var(--border-color);
+            border-width: var(--border-width);
+            border-style: solid;
+            border-radius: var(--card-radius);
+            box-shadow: var(--box-shadow);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .custom-card:hover {
+            transform: var(--card-transform);
+            border-color: var(--accent-primary);
+        }
+
+        .custom-btn {
+            border-radius: var(--btn-radius);
+            border-width: var(--border-width);
+            border-style: solid;
+            transition: all 0.2s ease;
+        }
+
+        .custom-btn-primary {
+            background-color: var(--accent-primary);
+            color: #0d1117;
+            font-weight: 600;
+            border-color: var(--accent-primary);
+        }
+        .custom-btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .custom-btn-gold {
+            background-color: var(--accent-gold);
+            color: #0d1117;
+            font-weight: 600;
+            border-color: var(--accent-gold);
+        }
+        .custom-btn-gold:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .custom-btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border-color: var(--border-color);
+        }
+        .custom-btn-outline:hover {
+            background-color: var(--bg-secondary);
+            border-color: var(--accent-primary);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-primary);
+            border-radius: 4px;
+        }
+
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.82);
+            backdrop-filter: blur(6px);
+        }
+
+        .terminal-glow {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased flex flex-col justify-between">
+
+    <header class="sticky top-0 z-40 w-full bg-custom-primary border-b border-custom transition-colors duration-300 backdrop-blur-md bg-opacity-90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-9 h-9 rounded-lg bg-custom-secondary border border-custom flex items-center justify-center text-custom-gold font-mono-custom text-lg font-bold group-hover:border-custom-accent transition-colors">
+                    ♟
+                </div>
+                <div>
+                    <span class="font-heading-custom text-xl sm:text-2xl font-bold tracking-tight text-custom-main group-hover:text-custom-accent transition-colors">
+                        Shashikant Singh
+                    </span>
+                    <span class="block text-[10px] font-mono-custom text-custom-muted">
+                        C Systems & Web Architecture
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-6 font-medium text-xs font-mono-custom tracking-wide">
+                <a href="#about" class="text-custom-muted hover:text-custom-accent transition-colors">// About</a>
+                <a href="#chess-mindset" class="text-custom-muted hover:text-custom-accent transition-colors">// Chess Mindset</a>
+                <a href="#education" class="text-custom-muted hover:text-custom-accent transition-colors">// Education</a>
+                <a href="#skills" class="text-custom-muted hover:text-custom-accent transition-colors">// Skills</a>
+                <a href="#projects" class="text-custom-muted hover:text-custom-accent transition-colors">// Projects</a>
+                <a href="#certifications" class="text-custom-muted hover:text-custom-accent transition-colors">// Certs</a>
+                <a href="#contact" class="text-custom-muted hover:text-custom-accent transition-colors">// Contact</a>
+            </nav>
+
+            <!-- Right Utilities & Theme Selector -->
+            <div class="flex items-center gap-3">
+                
+                <!-- Theme Switcher -->
+                <div class="relative inline-block text-left" id="theme-dropdown-container">
+                    <button type="button" id="theme-menu-btn" class="custom-btn custom-btn-outline px-3 py-2 text-xs font-mono-custom flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-custom-accent inline-block"></span>
+                        <span id="current-theme-label">Obsidian</span>
+                        <svg class="w-3 h-3 text-custom-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Theme Menu Panel -->
+                    <div id="theme-dropdown-menu" class="hidden absolute right-0 mt-2 w-56 custom-card p-2 z-50 shadow-2xl">
+                        <div class="text-[10px] font-mono-custom uppercase tracking-wider text-custom-muted px-3 py-1.5 border-b border-custom mb-1">
+                            Theme Concept
+                        </div>
+                        <button onclick="setTheme('obsidian')" class="w-full text-left px-3 py-2 text-xs font-medium rounded flex items-center justify-between hover:bg-custom-secondary transition-colors">
+                            <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full inline-block bg-[#10B981]"></span> Obsidian Dark</span>
+                            <span class="text-[10px] font-mono-custom text-custom-muted">Default</span>
+                        </button>
+                        <button onclick="setTheme('matrix')" class="w-full text-left px-3 py-2 text-xs font-medium rounded flex items-center justify-between hover:bg-custom-secondary transition-colors">
+                            <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full inline-block bg-[#00ff88]"></span> Matrix Emerald</span>
+                            <span class="text-[10px] font-mono-custom text-custom-muted">Cyber</span>
+                        </button>
+                        <button onclick="setTheme('amber')" class="w-full text-left px-3 py-2 text-xs font-medium rounded flex items-center justify-between hover:bg-custom-secondary transition-colors">
+                            <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full inline-block bg-[#f59e0b]"></span> Royal Amber</span>
+                            <span class="text-[10px] font-mono-custom text-custom-muted">Warm</span>
+                        </button>
+                        <button onclick="setTheme('minimal')" class="w-full text-left px-3 py-2 text-xs font-medium rounded flex items-center justify-between hover:bg-custom-secondary transition-colors">
+                            <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-full inline-block bg-[#059669]"></span> Minimal Paper</span>
+                            <span class="text-[10px] font-mono-custom text-custom-muted">Light</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- GitHub Profile Icon -->
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="p-2 text-custom-muted hover:text-custom-accent transition-colors hidden sm:block">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+
+                <!-- LinkedIn Icon -->
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="p-2 text-custom-muted hover:text-custom-accent transition-colors hidden sm:block">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-custom-main border-custom rounded">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-custom bg-custom-primary px-4 pt-2 pb-6 space-y-3 font-mono-custom text-xs">
+            <a href="#about" class="block py-2 text-custom-main hover:text-custom-accent">// About</a>
+            <a href="#chess-mindset" class="block py-2 text-custom-main hover:text-custom-accent">// Chess Mindset</a>
+            <a href="#education" class="block py-2 text-custom-main hover:text-custom-accent">// Education</a>
+            <a href="#skills" class="block py-2 text-custom-main hover:text-custom-accent">// Skills</a>
+            <a href="#projects" class="block py-2 text-custom-main hover:text-custom-accent">// Projects</a>
+            <a href="#certifications" class="block py-2 text-custom-main hover:text-custom-accent">// Certifications</a>
+            <a href="#contact" class="block py-2 text-custom-main hover:text-custom-accent">// Contact</a>
+            <div class="pt-2 flex items-center gap-4">
+                <a href="https://github.com" target="_blank" class="underline text-custom-accent">GitHub</a>
+                <a href="https://linkedin.com" target="_blank" class="underline text-custom-accent">LinkedIn</a>
+                <a href="https://chess.com" target="_blank" class="underline text-custom-gold">Chess.com Profile</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="relative py-16 lg:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+        
+        <!-- Status Indicator Pill -->
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-custom bg-custom-secondary mb-8">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-xs font-mono-custom text-custom-main">JECRC University • B.Tech CSE (Batch 2026–2030)</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Hero Headline -->
+            <div class="lg:col-span-7 space-y-6">
+                <div class="text-xs font-mono-custom uppercase tracking-widest text-custom-accent">// SYSTEM ARCHITECTURE & LOGIC DESIGN</div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading-custom font-bold tracking-tight leading-[1.12] text-custom-main">
+                    Architecting Logic from <span class="text-custom-accent underline underline-offset-8 decoration-custom-accent/40">Low-Level C</span> to Modern Web.
+                </h1>
+                
+                <p class="text-base sm:text-lg text-custom-muted font-light leading-relaxed max-w-2xl">
+                    "Engineered with Strategic Precision." I’m <strong class="text-custom-main font-semibold">Shashikant Singh</strong>, a Computer Science Engineering student building rock-solid software fundamentals, memory-efficient C algorithms, and performant web interfaces.
+                </p>
+
+                <!-- Hero Action CTA Buttons -->
+                <div class="pt-4 flex flex-wrap items-center gap-4">
+                    <a href="#projects" class="custom-btn custom-btn-primary px-6 py-3.5 text-xs font-mono-custom uppercase tracking-wider flex items-center gap-2">
+                        <span>View First-Year Projects</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                    <a href="#chess-mindset" class="custom-btn custom-btn-gold px-6 py-3.5 text-xs font-mono-custom uppercase tracking-wider flex items-center gap-2">
+                        <span>♟ Tactical Mindset</span>
+                    </a>
+                    <a href="#contact" class="custom-btn custom-btn-outline px-6 py-3.5 text-xs font-mono-custom">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Hero Interactive Chess Elo Card -->
+            <div class="lg:col-span-5">
+                <div class="custom-card p-6 relative overflow-hidden terminal-glow">
+                    <div class="flex items-center justify-between border-b border-custom pb-4 mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+                            <span class="text-xs font-mono-custom text-custom-muted ml-2">chess_profile.h</span>
+                        </div>
+                        <span class="px-2 py-0.5 text-[10px] font-mono-custom rounded bg-custom-gold/20 text-custom-gold border border-custom-gold/30">
+                            1625 Elo Peak
+                        </span>
+                    </div>
+
+                    <!-- Mini Chess Stat Widget -->
+                    <div class="space-y-4 font-mono-custom text-xs">
+                        <div class="p-3 rounded bg-custom-secondary border border-custom flex items-center justify-between">
+                            <span class="text-custom-muted">Chess.com Rating</span>
+                            <span class="text-xl font-bold text-custom-gold font-heading-custom">1625 Elo</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3 rounded bg-custom-secondary border border-custom">
+                                <span class="text-[10px] text-custom-muted block">PRIMARY OPENING</span>
+                                <span class="text-custom-main font-semibold">Sicilian Defense</span>
+                            </div>
+                            <div class="p-3 rounded bg-custom-secondary border border-custom">
+                                <span class="text-[10px] text-custom-muted block">PLAYSTYLE</span>
+                                <span class="text-custom-accent font-semibold">Positional & Dynamic</span>
+                            </div>
+                        </div>
+
+                        <div class="text-[11px] text-custom-muted leading-relaxed italic border-l-2 border-custom-accent pl-3 py-1">
+                            "Calculated decision-making under time control directly translates to structuring clean functions and low-level memory allocation."
+                        </div>
+
+                        <a href="https://chess.com" target="_blank" rel="noopener noreferrer" class="block text-center py-2 text-[11px] text-custom-gold border border-custom-gold/30 rounded hover:bg-custom-gold/10 transition-colors">
+                            View Chess.com Verified Stats ↗
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-custom-secondary border-y border-custom transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left Bio Column -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="text-xs font-mono-custom uppercase tracking-widest text-custom-accent">// 01. ABOUT MY JOURNEY</div>
+                    <h2 class="text-3xl sm:text-4xl font-heading-custom font-bold text-custom-main leading-tight">
+                        Building Rock-Solid Software Fundamentals at JECRC University.
+                    </h2>
+                    
+                    <p class="text-custom-muted text-sm sm:text-base leading-relaxed">
+                        I am a passionate first-year Computer Science Engineering student dedicated to mastering software engineering from the ground up. My primary focus centers around <strong class="text-custom-main">low-level systems programming in C</strong>, understanding memory layout, data structures, and algorithmic logic.
+                    </p>
+                    <p class="text-custom-muted text-sm sm:text-base leading-relaxed">
+                        Simultaneously, I explore modern web technologies (HTML5, CSS3, modern JavaScript) to create intuitive, accessible web platforms. I believe that understanding what happens beneath the compiler leads to cleaner, more efficient high-level applications.
+                    </p>
+
+                    <div class="pt-2 grid grid-cols-2 gap-4 text-xs font-mono-custom">
+                        <div class="p-3 rounded border border-custom bg-custom-card">
+                            <span class="text-custom-accent font-bold block mb-1">C LANGUAGE FOCUS</span>
+                            <span class="text-custom-muted">Pointers, Memory, Structs, File I/O</span>
+                        </div>
+                        <div class="p-3 rounded border border-custom bg-custom-card">
+                            <span class="text-custom-gold font-bold block mb-1">WEB FUNDAMENTALS</span>
+                            <span class="text-custom-muted">Semantic HTML, Flexbox, Responsive CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Bio Stat Breakdown -->
+                <div class="lg:col-span-6 space-y-4">
+                    
+                    <div class="custom-card p-6">
+                        <h3 class="text-base font-heading-custom font-bold text-custom-main mb-3 flex items-center gap-2">
+                            <span class="text-custom-accent">⚡</span> Core Academic Focus Areas
+                        </h3>
+                        <ul class="space-y-2 text-xs font-mono-custom text-custom-muted">
+                            <li class="flex items-center gap-2">
+                                <span class="text-custom-accent">→</span> C Systems Programming & Logic Building
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-custom-accent">→</span> Data Structures & Algorithmic Thinking
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-custom-accent">→</span> Web Design & CSS Grid Layouts
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-custom-accent">→</span> Discrete Mathematics & Computer Fundamentals
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="custom-card p-6">
+                        <h3 class="text-base font-heading-custom font-bold text-custom-main mb-3 flex items-center gap-2">
+                            <span class="text-custom-gold">🏆</span> Academic Progression & Goals
+                        </h3>
+                        <p class="text-xs text-custom-muted leading-relaxed mb-3">
+                            Currently maintaining a rigorous self-directed coding schedule alongside B.Tech coursework, targeting open-source contributions in low-level utilities and web tooling.
+                        </p>
+                        <div class="w-full bg-custom-primary rounded-full h-2 overflow-hidden border border-custom">
+                            <div class="bg-custom-accent h-2 rounded-full" style="width: 25%"></div>
+                        </div>
+                        <div class="flex justify-between text-[10px] font-mono-custom text-custom-muted mt-1">
+                            <span>Year 1 (Batch 2026-2030)</span>
+                            <span>Target: Core Mastery</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="chess-mindset" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-xs font-mono-custom uppercase tracking-widest text-custom-gold mb-2">// 02. STRATEGIC PARALLELS</div>
+        <h2 class="text-3xl sm:text-4xl font-heading-custom font-bold text-custom-main mb-4">
+            Chess & Software Engineering Mindset
+        </h2>
+        <p class="text-custom-muted text-sm sm:text-base max-w-3xl mb-12">
+            "I treat software engineering and code design like a game of chess — focusing on tactical planning, evaluating alternatives, memory optimization, and strategic execution."
+        </p>
+
+        <!-- Comparison Interactive Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- Strategic Pillar 1 -->
+            <div class="custom-card p-6 flex flex-col justify-between">
+                <div>
+                    <div class="text-2xl mb-3">♟️</div>
+                    <div class="text-xs font-mono-custom text-custom-gold mb-1">TACTICAL PLANNING</div>
+                    <h3 class="text-lg font-heading-custom font-bold text-custom-main mb-2">Calculating 3 Moves Ahead</h3>
+                    <p class="text-xs text-custom-muted leading-relaxed">
+                        In chess, every move creates weaknesses or opportunities. In C programming, planning pointers, memory allocation, and edge cases before typing code prevents runtime bugs.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-custom text-[11px] font-mono-custom text-custom-accent">
+                    Parallel: Pre-condition Checks & Guard Clauses
+                </div>
+            </div>
+
+            <!-- Strategic Pillar 2 -->
+            <div class="custom-card p-6 flex flex-col justify-between">
+                <div>
+                    <div class="text-2xl mb-3">🔍</div>
+                    <div class="text-xs font-mono-custom text-custom-gold mb-1">EVALUATING ALTERNATIVES</div>
+                    <h3 class="text-lg font-heading-custom font-bold text-custom-main mb-2">Candidate Moves Analysis</h3>
+                    <p class="text-xs text-custom-muted leading-relaxed">
+                        Grandmasters compare multiple lines of play. Similarly, I evaluate time vs. space complexity tradeoffs when selecting data structures or looping mechanisms.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-custom text-[11px] font-mono-custom text-custom-accent">
+                    Parallel: Algorithmic Efficiency (O(n) vs O(1))
+                </div>
+            </div>
+
+            <!-- Strategic Pillar 3 -->
+            <div class="custom-card p-6 flex flex-col justify-between">
+                <div>
+                    <div class="text-2xl mb-3">⚙️</div>
+                    <div class="text-xs font-mono-custom text-custom-gold mb-1">SPATIAL & MEMORY CONTROL</div>
+                    <h3 class="text-lg font-heading-custom font-bold text-custom-main mb-2">Board Vision & Buffer Control</h3>
+                    <p class="text-xs text-custom-muted leading-relaxed">
+                        Controlling key squares on the board mirrors managing stack vs. heap allocation in memory—keeping assets organized and leak-free.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-custom text-[11px] font-mono-custom text-custom-accent">
+                    Parallel: Memory Management & Struct Layout
+                </div>
+            </div>
+
+            <!-- Strategic Pillar 4 -->
+            <div class="custom-card p-6 flex flex-col justify-between">
+                <div>
+                    <div class="text-2xl mb-3">🎯</div>
+                    <div class="text-xs font-mono-custom text-custom-gold mb-1">ENDGAME EXECUTION</div>
+                    <h3 class="text-lg font-heading-custom font-bold text-custom-main mb-2">Conversion & Clean Code</h3>
+                    <p class="text-xs text-custom-muted leading-relaxed">
+                        Winning a winning endgame requires flawless execution. Clean code refactoring, clear naming conventions, and proper documentation seal the victory.
+                    </p>
+                </div>
+                <div class="mt-4 pt-3 border-t border-custom text-[11px] font-mono-custom text-custom-accent">
+                    Parallel: Modular Code & Documentation
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="education" class="py-20 bg-custom-secondary border-y border-custom transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-xs font-mono-custom uppercase tracking-widest text-custom-accent mb-2">// 03. ACADEMIC BACKGROUND</div>
+            <h2 class="text-3xl sm:text-4xl font-heading-custom font-bold text-custom-main mb-12">Education Timeline</h2>
+
+            <div class="relative border-l-2 border-custom ml-3 sm:ml-6 space-y-12">
+                
+                <!-- Education Item -->
+                <div class="relative pl-6 sm:pl-10">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-custom-accent border-4 border-custom-primary"></div>
+                    
+                    <div class="custom-card p-6 sm:p-8">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                            <div>
+                                <h3 class="text-xl font-heading-custom font-bold text-custom-main">Bachelor of Technology (B.Tech)</h3>
+                                <div class="text-sm font-mono-custom text-custom-accent font-semibold">Computer Science & Engineering</div>
+                            </div>
+                            <span class="px-3 py-1 text-xs font-mono-custom border border-custom rounded-full bg-custom-primary text-custom-gold">
+                                Batch 2026 — 2030
+                            </span>
+                        </div>
+                        
+                        <div class="text-sm font-medium text-custom-main mb-4 flex items-center gap-2">
+                            <span>🏛 JECRC University, Jaipur</span>
+                        </div>
+                        
+                        <p class="text-xs sm:text-sm text-custom-muted mb-6">
+                            First-year undergraduate program focusing on computer science fundamentals, low-level programming paradigms, mathematical foundations, and practical engineering labs.
+                        </p>
+                        
+                        <div class="pt-4 border-t border-custom">
+                            <h4 class="text-xs font-mono-custom uppercase tracking-wider text-custom-main font-semibold mb-3">Key Focus Curriculum</h4>
+                            <div class="flex flex-wrap gap-2 text-xs font-mono-custom text-custom-muted">
+                                <span class="px-2.5 py-1 rounded border border-custom bg-custom-primary">C Systems Programming</span>
+                                <span class="px-2.5 py-1 rounded border border-custom bg-custom-primary">Data Structures & Logic</span>
+                                <span class="px-2.5 py-1 rounded border border-custom bg-custom-primary">Web Fundamentals (HTML5/CSS3)</span>
+                                <span class="px-2.5 py-1 rounded border border-custom bg-custom-primary">Discrete Mathematics</span>
+                                <span class="px-2.5 py-1 rounded border border-custom bg-custom-primary">Computer Fundamentals</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-xs font-mono-custom uppercase tracking-widest text-custom-accent mb-2">// 04. TECHNICAL COMPETENCIES</div>
+        <h2 class="text-3xl sm:text-4xl font-heading-custom font-bold text-custom-main mb-8">Technical Skills</h2>
+
+        <!-- Skill Category Tabs -->
+        <div class="flex flex-wrap gap-2 mb-10 border-b border-custom pb-4" id="skill-tabs">
+            <button onclick="filterSkills('all')" class="skill-tab-btn active px-4 py-2 text-xs font-mono-custom rounded border border-custom bg-custom-accent text-slate-900 font-semibold">
+                [All Skills]
+            </button>
+            <button onclick="filterSkills('languages')" class="skill-tab-btn px-4 py-2 text-xs font-mono-custom rounded border border-custom bg-custom-card text-custom-main hover:bg-custom-secondary">
+                Languages
+            </button>
+            <button onclick="filterSkills('web')" class="skill-tab-btn px-4 py-2 text-xs font-mono-custom rounded border border-custom bg-custom-card text-custom-main hover:bg-custom-secondary">
+                Web Dev
+            </button>
+            <button onclick="filterSkills('tools')" class="skill-tab-btn px-4 py-2 text-xs font-mono-custom rounded border border-custom bg-custom-card text-custom-main hover:bg-custom-secondary">
+                Tools & OS
+            </button>
+            <button onclick="filterSkills('core')" class="skill-tab-btn px-4 py-2 text-xs font-mono-custom rounded border border-custom bg-custom-card text-custom-main hover:bg-custom-secondary">
+                Core Competencies
+            </button>
+        </div>
+
+        <!-- Skills Cards Container -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="skills-container">
+            
+            <!-- Language Skill 1 -->
+            <div class="skill-card custom-card p-6" data-category="languages">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-base font-semibold text-custom-main">C Language (Core Focus)</span>
+                    <span class="text-xs font-mono-custom text-custom-accent font-bold">Advanced Fundamentals</span>
+                </div>
+                <div class="w-full bg-custom-secondary rounded-full h-2 overflow-hidden border border-custom mb-3">
+                    <div class="bg-custom-accent h-2 rounded-full" style="width: 88%"></div>
+                </div>
+                <div class="text-xs text-custom-muted font-mono-custom">
+                    Pointers, Dynamic Memory Allocation (malloc/free), File I/O, Structs, Unions & Command Line Apps.
+                </div>
+            </div>
+
+            <!-- Language Skill 2 -->
+            <div class="skill-card custom-card p-6" data-category="languages">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-base font-semibold text-custom-main">Python (Basics)</span>
+                    <span class="text-xs font-mono-custom text-custom-gold font-bold">Foundational</span>
+                </div>
+                <div class="w-full bg-custom-secondary rounded-full h-2 overflow-hidden border border-custom mb-3">
+                    <div class="bg-custom-gold h-2 rounded-full" style="width: 60%"></div>
+                </div>
+                <div class="text-xs text-custom-muted font-mono-custom">
+                    Syntax, Control Structures, Basic Scripting, Functions & Automation.
+                </div>
+            </div>
+
+            <!-- Web Skill 1 -->
+            <div class="skill-card custom-card p-6" data-category="web">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-base font-semibold text-custom-main">HTML5 & CSS3</span>
+                    <span class="text-xs font-mono-custom text-custom-accent font-bold">Proficient</span>
+                </div>
+                <div class="w-full bg-custom-secondary rounded-full h-2 overflow-hidden border border-custom mb-3">
+                    <div class="bg-custom-accent h-2 rounded-full" style="width: 85%"></div>
+                </div>
+                <div class="text-xs text-custom-muted font-mono-custom">
+                    Semantic Tags, CSS Flexbox, CSS Grid, Responsive Design, CSS Variables & Micro-interactions.
+                </div>
+            </div>
+
+            <!-- Tools Skill 1 -->
+            <div class="skill-card custom-card p-6" data-category="tools">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-base font-semibold text-custom-main">Git, GitHub & Linux Basics</span>
+                    <span class="text-xs font-mono-custom text-custom-accent font-bold">Intermediate</span>
+                </div>
+                <div class="w-full bg-custom-secondary rounded-full h-2 overflow-hidden border border-custom mb-3">
+                    <div class="bg-custom-accent h-2 rounded-full" style="width: 75%"></div>
+                </div>
+                <div class="text-xs text-custom-muted font-mono-custom">
+                    Version Control, Branching, Pull Requests, Bash Shell, Linux Command Line Navigation.
+                </div>
+            </div>
+
+            <!-- Core Skill 1 -->
+            <div class="skill-card custom-card p-6" data-category="core">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-base font-semibold text-custom-main">Logic Building & Algorithmic Thinking</span>
+                    <span class="text-xs font-mono-custom text-custom-gold font-bold">High Proficiency</span>
+                </div>
+                <div class="w-full bg-custom-secondary rounded-full h-2 overflow-hidden border border-custom mb-3">
+                    <div class="bg-custom-gold h-2 rounded-full" style="width: 90%"></div>
+                </div>
+                <div class="text-xs text-custom-muted font-mono-custom">
+                    Problem Decomposition, Flowcharts, Pseudocode, Mathematical Proofs & Chess Calculation.
+                </div>
+            </div>
+
+            <!-- Core Skill 2 -->
+            <div class="skill-card custom-card p-6" data-category="core">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-base font-semibold text-custom-main">Data Structures in C</span>
+                    <span class="text-xs font-mono-custom text-custom-accent font-bold">In Progress</span>
+                </div>
+                <div class="w-full bg-custom-secondary rounded-full h-2 overflow-hidden border border-custom mb-3">
+                    <div class="bg-custom-accent h-2 rounded-full" style="width: 70%"></div>
+                </div>
+                <div class="text-xs text-custom-muted font-mono-custom">
+                    Arrays, Linked Lists, Stacks, Queues, Searching & Sorting Algorithms.
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-custom-secondary border-y border-custom transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-xs font-mono-custom uppercase tracking-widest text-custom-accent mb-2">// 05. PRACTICAL WORKS</div>
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+                <h2 class="text-3xl sm:text-4xl font-heading-custom font-bold text-custom-main">First-Year Engineering Projects</h2>
+                
+                <!-- Project Category Filters -->
+                <div class="flex flex-wrap gap-2" id="project-filters">
+                    <button onclick="filterProjects('all')" class="proj-filter-btn active px-3 py-1.5 text-xs font-mono-custom rounded border border-custom bg-custom-accent text-slate-900 font-semibold">All</button>
+                    <button onclick="filterProjects('c-lang')" class="proj-filter-btn px-3 py-1.5 text-xs font-mono-custom rounded border border-custom bg-custom-card text-custom-main hover:bg-custom-primary">C Programming</button>
+                    <button onclick="filterProjects('web')" class="proj-filter-btn px-3 py-1.5 text-xs font-mono-custom rounded border border-custom bg-custom-card text-custom-main hover:bg-custom-primary">Web Platforms</button>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                
+                <!-- Project 1: Chess Tracker (C) -->
+                <div class="project-card custom-card flex flex-col justify-between overflow-hidden" data-category="c-lang">
+                    <div>
+                        <!-- C Terminal Header Mockup -->
+                        <div class="h-44 bg-custom-primary border-b border-custom p-4 font-mono-custom text-xs text-custom-accent flex flex-col justify-between relative group">
+                            <div class="flex items-center justify-between text-custom-muted border-b border-custom/50 pb-2">
+                                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> chess_elo.c</span>
+                                <span>GCC v11.4</span>
+                            </div>
+                            <div class="text-[11px] text-custom-muted font-mono-custom">
+                                <span class="text-custom-gold">$ gcc -o tracker main.c</span><br>
+                                <span class="text-custom-main">$ ./tracker --tourney 2026</span><br>
+                                <span class="text-emerald-400">&gt; Calculating dynamic Elo ratings...</span>
+                            </div>
+                            <div class="text-[10px] text-custom-accent/80 font-mono-custom">
+                                Structs • File I/O • Dynamic Elo
+                            </div>
+                        </div>
+                        
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-[10px] font-mono-custom px-2 py-0.5 rounded border border-custom bg-custom-primary text-custom-accent font-semibold">C CLI APPLICATION</span>
+                                <span class="text-[10px] font-mono-custom text-custom-muted">Year 1 Project</span>
+                            </div>
+                            <h3 class="text-xl font-heading-custom font-bold text-custom-main mb-2">Chess Tournament & Rating Tracker</h3>
+                            <p class="text-xs sm:text-sm text-custom-muted line-clamp-3 mb-4">
+                                Command-line system engineered to register players, record tournament matches, calculate dynamic Elo changes using custom formulas, and persist rankings to local binary data files.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[10px] font-mono-custom px-2 py-0.5 border border-custom rounded text-custom-muted">C Language</span>
+                                <span class="text-[10px] font-mono-custom px-2 py-0.5 border border-custom rounded text-custom-muted">File I/O</span>
+                                <span class="text-[10px] font-mono-custom px-2 py-0.5 border border-custom rounded text-custom-muted">Structs</span>
+                                <span class="text-[10px] font-mono-custom px-2 py-0.5 border border-custom rounded text-custom-muted">Elo Algorithm</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-0 flex items-center justify-between border-t border-custom pt-4">
+                        <button onclick="openTerminalModal('chess-tracker')" class="text-xs font-mono-custom text-custom-accent hover:underline flex items-center gap-1 font-semibold">
+                            <span>Run CLI Simulation ➔</span>
+                        </button>
+                        <a href="https://github.com" target="_blank" class="text-xs font-mono-custom text-custom-muted hover:text-custom-main">GitHub Repo</a>
+                    </div>
+                </div>
+
+                <!-- Project 2: Personal Portfolio (HTML/CSS) -->
+                <div class="project-card custom-card flex flex-col justify-between overflow-hidden" data-category="web">
+                    <div>
+                        <!-- Portfolio Preview Mockup -->
+                        <div class="h-44 bg-custom-primary border-b border-custom p-4 font-mono-custom text-xs flex flex-col justify-between relative group">
+                            <div class="flex items-center justify-between text-custom-muted border-b border-custom/50 pb-2">
+                                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-custom-gold"></span> index.html</span>
+                                <span>HTML5 / CSS3</span>
+                            </div>
+                            <div class="text-center my-auto">
+                                <span class="text-lg font-heading-custom font-bold text-custom-main">Shashikant Singh</span>
+                                <span class="block text-[11px] text-custom-accent font-mono-custom">Grandmaster Tactical Theme</span>
+                            </div>
+                            <div class="text-[10px] text-custom-muted font-mono-custom flex justify-between">
+                                <span>4 Theme Modes</span>
+                                <span>100% Responsive</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-[10px] font-mono-custom px-2 py-0.5 rounded border border-custom bg-custom-primary text-custom-gold font-semibold">WEB PLATFORM</span>
+                                <span class="text-[10px] font-mono-custom text-custom-muted">Year 1 Project</span>
+                            </div>
+                            <h3 class="text-xl font-heading-custom font-bold text-custom-main mb-2">Personal Portfolio Showcase</h3>
+                            <p class="text-xs sm:text-sm text-custom-muted line-clamp-3 mb-4">
+                                High-performance, responsive multi-section web showcase tailored with a custom 4-theme switcher, micro-interactions, chess rating card, and academic progression tracking.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[10px] font-mono-custom px-2 py-0.5 border border-custom rounded text-custom-muted">HTML5</span>
+                                <span class="text-[10px] font-mono-custom px-2 py-0.5 border border-custom rounded text-custom-muted">CSS Flexbox/Grid</span>
+                                <span class="text-[10px] font-mono-custom px-2 py-0.5 border border-custom rounded text-custom-muted">Vanilla JS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-0 flex items-center justify-between border-t border-custom pt-4">
+                        <button onclick="openTerminalModal('portfolio')" class="text-xs font-mono-custom text-custom-accent hover:underline flex items-center gap-1 font-semibold">
+                            <span>View Architecture Specs ➔</span>
+                        </button>
+                        <a href="https://github.com" target="_blank" class="text-xs font-mono-custom text-custom-muted hover:text-custom-main">GitHub Repo</a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Student Academic & GPA Calculator (C) -->
+                <div class="project-card custom-card flex flex-col justify-between overflow-hidden" data-category="c-lang">
+                    <div>
+                        <!-- GPA Terminal Preview Mockup -->
+                        <div class="h-44 bg-custom-primary border-b border-custom p-4 font-mono-custom text-xs flex flex-col justify-between relative group">
+                            <div class="flex items-center justify-between text-custom-muted border-b border-custom/50 pb-2">
+                                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span> gpa_calc.c</span>
+                                <span>GCC v11.4</span>
+                            </div>
+                            <div class="text-[11px] text-custom-muted font-mono-custom">
+                                <span class="text-custom-gold">$ ./gpa_calc --student "Shashikant"</span><br>
+                                <span class="text-custom-main">&gt; Course: Programming in C (4 Credits) [A+]</span><br>
+                                <span class="text-emerald-400">&gt; Semester SGPA: 9.25 / 10.0</span>
+                            </div>
+                            <div class="text-[10px] text-custom-muted font-mono-custom">
+                                Modular Functions • Weighted Averages
+                            </div>
+                        </div>
+                        
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-[10px] font-mono-custom px-2 py-0.5 rounded border border-custom bg-custom-primary text-custom-accent font-semibold">C CLI APPLICATION</span>
+                                <span class="text-[10px] font-mono-custom text-custom-muted">Year 1 Project</span>
+                            </div>
+                            <h3 class="text-xl font-heading-custom font-bold text-custom-main mb-2">Student Academic & GPA Calculator</h3>
+                            <p class="text-xs sm:text-sm text-custom-muted line-clamp-3 mb-4">
+                                Modular console application designed to record coursework credit hours, weighted grading parameters, and compute semester GPAs accurately with detailed transcript rendering.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                <span class="text-[10px] font-mono-custom px-2 py-0.5 border border-custom rounded text-custom-muted">C Language</span>
+                                <span class="text-[10px] font-mono-custom px-2 py-0.5 border border-custom rounded text-custom-muted">Functions</span>
+                                <span class="text-[10px] font-mono-custom px-2 py-0.5 border border-custom rounded text-custom-muted">Arrays</span>
+                                <span class="text-[10px] font-mono-custom px-2 py-0.5 border border-custom rounded text-custom-muted">Formatted I/O</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-0 flex items-center justify-between border-t border-custom pt-4">
+                        <button onclick="openTerminalModal('gpa-calc')" class="text-xs font-mono-custom text-custom-accent hover:underline flex items-center gap-1 font-semibold">
+                            <span>Run CLI Simulation ➔</span>
+                        </button>
+                        <a href="https://github.com" target="_blank" class="text-xs font-mono-custom text-custom-muted hover:text-custom-main">GitHub Repo</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-xs font-mono-custom uppercase tracking-widest text-custom-gold mb-2">// 06. MILESTONES & CREDENTIALS</div>
+        <h2 class="text-3xl sm:text-4xl font-heading-custom font-bold text-custom-main mb-12">Recommended & Target Certifications</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Cert 1 -->
+            <div class="custom-card p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-mono-custom text-custom-accent px-2 py-0.5 border border-custom rounded bg-custom-secondary">NPTEL</span>
+                        <span class="text-xs font-mono-custom text-custom-muted">IIT Kharagpur</span>
+                    </div>
+                    <h3 class="text-lg font-heading-custom font-bold text-custom-main mb-2">Problem Solving Through Programming in C</h3>
+                    <p class="text-xs text-custom-muted mb-4">Comprehensive examination of algorithm logic, arrays, pointers, and C syntax structures.</p>
+                </div>
+                <a href="https://nptel.ac.in" target="_blank" class="text-xs font-mono-custom text-custom-accent hover:underline inline-block font-semibold">Verify Course Portal ↗</a>
+            </div>
+
+            <!-- Cert 2 -->
+            <div class="custom-card p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-mono-custom text-custom-gold px-2 py-0.5 border border-custom rounded bg-custom-secondary">CISCO</span>
+                        <span class="text-xs font-mono-custom text-custom-muted">Networking Academy</span>
+                    </div>
+                    <h3 class="text-lg font-heading-custom font-bold text-custom-main mb-2">C Essentials / Programming Unlocked</h3>
+                    <p class="text-xs text-custom-muted mb-4">Foundational computer science concepts, memory execution models, and fundamental programming principles.</p>
+                </div>
+                <a href="https://netacad.com" target="_blank" class="text-xs font-mono-custom text-custom-gold hover:underline inline-block font-semibold">Verify Credentials ↗</a>
+            </div>
+
+            <!-- Cert 3 -->
+            <div class="custom-card p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-mono-custom text-custom-accent px-2 py-0.5 border border-custom rounded bg-custom-secondary">freeCodeCamp</span>
+                        <span class="text-xs font-mono-custom text-custom-muted">300 Hours</span>
+                    </div>
+                    <h3 class="text-lg font-heading-custom font-bold text-custom-main mb-2">Responsive Web Design Certification</h3>
+                    <p class="text-xs text-custom-muted mb-4">Mastery of HTML5, CSS3, Flexbox, CSS Grid, media queries, and web accessibility standards.</p>
+                </div>
+                <a href="https://freecodecamp.org" target="_blank" class="text-xs font-mono-custom text-custom-accent hover:underline inline-block font-semibold">Verify Certification ↗</a>
+            </div>
+
+            <!-- Cert 4 -->
+            <div class="custom-card p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-mono-custom text-custom-accent px-2 py-0.5 border border-custom rounded bg-custom-secondary">Google / Coursera</span>
+                        <span class="text-xs font-mono-custom text-custom-muted">Git VCS</span>
+                    </div>
+                    <h3 class="text-lg font-heading-custom font-bold text-custom-main mb-2">Introduction to Git and GitHub</h3>
+                    <p class="text-xs text-custom-muted mb-4">Version control management, distributed workflows, branching strategies, and collaboration tools.</p>
+                </div>
+                <a href="https://coursera.org" target="_blank" class="text-xs font-mono-custom text-custom-accent hover:underline inline-block font-semibold">Verify Certification ↗</a>
+            </div>
+
+            <!-- Cert 5 -->
+            <div class="custom-card p-6 flex flex-col justify-between sm:col-span-2 lg:col-span-1">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-mono-custom text-custom-gold px-2 py-0.5 border border-custom rounded bg-custom-secondary">AWS ACADEMY</span>
+                        <span class="text-xs font-mono-custom text-custom-muted">Cloud Fundamentals</span>
+                    </div>
+                    <h3 class="text-lg font-heading-custom font-bold text-custom-main mb-2">AWS Cloud Foundations</h3>
+                    <p class="text-xs text-custom-muted mb-4">Overview of cloud computing paradigms, distributed infrastructure, storage, and security basics.</p>
+                </div>
+                <a href="https://aws.amazon.com" target="_blank" class="text-xs font-mono-custom text-custom-gold hover:underline inline-block font-semibold">Verify Certification ↗</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-custom-secondary border-y border-custom transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Direct Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="text-xs font-mono-custom uppercase tracking-widest text-custom-accent">// 07. CONNECT WITH SHASHIKANT</div>
+                    <h2 class="text-3xl sm:text-5xl font-heading-custom font-bold text-custom-main leading-tight">
+                        Let’s Collaborate & Solve Problems.
+                    </h2>
+                    <p class="text-sm text-custom-muted leading-relaxed">
+                        Whether you want to discuss low-level C logic, web development projects, competitive chess, or academic opportunities—my inbox is always open.
+                    </p>
+
+                    <div class="space-y-4 pt-4 border-t border-custom">
+                        
+                        <!-- Email -->
+                        <div class="flex items-start gap-4">
+                            <div class="p-2 border border-custom rounded bg-custom-primary text-custom-accent">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div>
+                                <div class="text-xs font-mono-custom text-custom-muted">DIRECT EMAIL</div>
+                                <a href="mailto:shashikant.singh@jecrc.ac.in" class="text-sm font-semibold text-custom-main hover:text-custom-accent transition-colors">shashikant.singh@jecrc.ac.in</a>
+                            </div>
+                        </div>
+
+                        <!-- University Location -->
+                        <div class="flex items-start gap-4">
+                            <div class="p-2 border border-custom rounded bg-custom-primary text-custom-gold">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </div>
+                            <div>
+                                <div class="text-xs font-mono-custom text-custom-muted">CAMPUS LOCATION</div>
+                                <div class="text-sm font-semibold text-custom-main">JECRC University, Jaipur, Rajasthan, India</div>
+                            </div>
+                        </div>
+
+                        <!-- Chess.com Direct -->
+                        <div class="flex items-start gap-4">
+                            <div class="p-2 border border-custom rounded bg-custom-primary text-custom-gold">
+                                <span class="text-lg">♟</span>
+                            </div>
+                            <div>
+                                <div class="text-xs font-mono-custom text-custom-muted">CHESS.COM PROFILE</div>
+                                <a href="https://chess.com" target="_blank" class="text-sm font-semibold text-custom-gold hover:underline">1625 Elo Active Player Profile ↗</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Contact Interactive Form -->
+                <div class="lg:col-span-7">
+                    <div class="custom-card p-6 sm:p-10">
+                        <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-6" novalidate>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="form-name" class="block text-xs font-mono-custom uppercase tracking-wider text-custom-main mb-2">Your Name *</label>
+                                    <input type="text" id="form-name" required placeholder="e.g. Rahul Sharma" class="w-full px-4 py-3 rounded border border-custom bg-custom-primary text-custom-main placeholder-custom-muted/50 focus:outline-none focus:border-custom-accent text-sm font-mono-custom">
+                                    <span class="hidden text-[11px] text-red-400 font-mono-custom mt-1" id="err-name">Please enter your name</span>
+                                </div>
+
+                                <div>
+                                    <label for="form-email" class="block text-xs font-mono-custom uppercase tracking-wider text-custom-main mb-2">Your Email *</label>
+                                    <input type="email" id="form-email" required placeholder="e.g. rahul@example.com" class="w-full px-4 py-3 rounded border border-custom bg-custom-primary text-custom-main placeholder-custom-muted/50 focus:outline-none focus:border-custom-accent text-sm font-mono-custom">
+                                    <span class="hidden text-[11px] text-red-400 font-mono-custom mt-1" id="err-email">Please enter a valid email address</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="form-subject" class="block text-xs font-mono-custom uppercase tracking-wider text-custom-main mb-2">Subject</label>
+                                <input type="text" id="form-subject" placeholder="Project Collaboration / Chess Match Challenge" class="w-full px-4 py-3 rounded border border-custom bg-custom-primary text-custom-main placeholder-custom-muted/50 focus:outline-none focus:border-custom-accent text-sm font-mono-custom">
+                            </div>
+
+                            <div>
+                                <label for="form-message" class="block text-xs font-mono-custom uppercase tracking-wider text-custom-main mb-2">Message *</label>
+                                <textarea id="form-message" rows="5" required placeholder="Share your thoughts, project ideas, or questions..." class="w-full px-4 py-3 rounded border border-custom bg-custom-primary text-custom-main placeholder-custom-muted/50 focus:outline-none focus:border-custom-accent text-sm font-mono-custom"></textarea>
+                                <span class="hidden text-[11px] text-red-400 font-mono-custom mt-1" id="err-message">Please enter a message</span>
+                            </div>
+
+                            <button type="submit" id="submit-btn" class="w-full custom-btn custom-btn-primary py-4 text-xs font-mono-custom uppercase tracking-wider flex items-center justify-center gap-2">
+                                <span>Transmit Message</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-custom py-10 bg-custom-primary text-custom-muted text-xs font-mono-custom">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                © 2026 Shashikant Singh. JECRC University • Grandmaster Tactical Obsidian.
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="#home" class="hover:text-custom-accent">Back to Top ↑</a>
+                <a href="https://github.com" target="_blank" class="hover:text-custom-accent">GitHub</a>
+                <a href="https://linkedin.com" target="_blank" class="hover:text-custom-accent">LinkedIn</a>
+                <a href="https://chess.com" target="_blank" class="hover:text-custom-gold">Chess.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Toast Notification Alert -->
+    <div id="toast-notification" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 max-w-md w-full">
+        <div class="custom-card p-4 flex items-center gap-3 border-l-4 border-l-emerald-500 shadow-2xl">
+            <div class="p-2 rounded-full bg-emerald-500/10 text-emerald-500 font-mono-custom font-bold">
+                ✓
+            </div>
+            <div class="flex-1">
+                <h4 class="text-xs font-mono-custom font-bold text-custom-main uppercase" id="toast-title">Message Received</h4>
+                <p class="text-xs text-custom-muted font-mono-custom" id="toast-message">Thank you! Shashikant will respond shortly.</p>
+            </div>
+            <button onclick="hideToast()" class="text-custom-muted hover:text-custom-main p-1 font-mono-custom">✕</button>
+        </div>
+    </div>
+
+    <!-- C Terminal Code Preview & Interactive Modal -->
+    <div id="terminal-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-backdrop">
+        <div class="custom-card max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto relative terminal-glow">
+            <button onclick="closeTerminalModal()" class="absolute top-4 right-4 text-custom-muted hover:text-custom-main text-lg font-mono-custom">✕</button>
+            
+            <div id="modal-terminal-content" class="font-mono-custom">
+                <!-- Dynamically filled by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const themeNames = {
+            'obsidian': 'Obsidian Dark',
+            'matrix': 'Matrix Emerald',
+            'amber': 'Royal Amber',
+            'minimal': 'Minimal Paper'
+        };
+
+        function setTheme(theme) {
+            if (theme === 'obsidian') {
+                document.documentElement.removeAttribute('data-theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', theme);
+            }
+            document.getElementById('current-theme-label').textContent = themeNames[theme] || 'Obsidian';
+            localStorage.setItem('shashikant_portfolio_theme', theme);
+            document.getElementById('theme-dropdown-menu').classList.add('hidden');
+        }
+
+        // Initialize Theme from LocalStorage
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('shashikant_portfolio_theme') || 'obsidian';
+            setTheme(savedTheme);
+        });
+
+        // Theme Toggle Menu
+        const themeBtn = document.getElementById('theme-menu-btn');
+        const themeMenu = document.getElementById('theme-dropdown-menu');
+        themeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            themeMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', () => {
+            themeMenu.classList.add('hidden');
+        });
+
+        // Mobile Nav Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Filter Skills
+        function filterSkills(category) {
+            const tabs = document.querySelectorAll('#skill-tabs button');
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-custom-accent', 'text-slate-900', 'font-semibold');
+                tab.classList.add('bg-custom-card', 'text-custom-main');
+            });
+            event.target.classList.remove('bg-custom-card', 'text-custom-main');
+            event.target.classList.add('bg-custom-accent', 'text-slate-900', 'font-semibold');
+
+            const cards = document.querySelectorAll('.skill-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Filter Projects
+        function filterProjects(category) {
+            const btns = document.querySelectorAll('#project-filters button');
+            btns.forEach(btn => {
+                btn.classList.remove('bg-custom-accent', 'text-slate-900', 'font-semibold');
+                btn.classList.add('bg-custom-card', 'text-custom-main');
+            });
+            event.target.classList.remove('bg-custom-card', 'text-custom-main');
+            event.target.classList.add('bg-custom-accent', 'text-slate-900', 'font-semibold');
+
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal content data for interactive terminal preview
+        const projectTerminalData = {
+            'chess-tracker': {
+                title: 'Chess Tournament & Rating Tracker (C Language)',
+                code: `#include <stdio.h>\n#include <stdlib.h>\n#include <math.h>\n\ntypedef struct {\n    int id;\n    char name[50];\n    double elo;\n} Player;\n\n// Calculate expected score for player A\ndouble calculate_expected(double ratingA, double ratingB) {\n    return 1.0 / (1.0 + pow(10.0, (ratingB - ratingA) / 400.0));\n}\n\nvoid update_elo(Player *p1, Player *p2, double score1, int K) {\n    double exp1 = calculate_expected(p1->elo, p2->elo);\n    p1->elo = p1->elo + K * (score1 - exp1);\n}`,
+                simulation: `[GCC 11.4.0 Compilation Success]\n> Loading player database from 'players.dat'...\n> Player 1: Shashikant Singh (Elo: 1625)\n> Player 2: Opponent_GM (Elo: 1650)\n\n[MATCH RESULT RECORDED: Player 1 Victory (1.0 - 0.0)]\n> Calculating expected score: E_A = 0.464\n> Applying K-Factor: K = 32\n> New Elo calculated: 1625 + 32 * (1.0 - 0.464) = 1642.15\n> Database updated successfully. Rankings persisted to disk.`
+            },
+            'portfolio': {
+                title: 'Personal Portfolio Website (HTML5 & CSS3)',
+                code: `<!-- Semantic HTML & Dynamic Theme Tokens -->\n<div class="custom-card p-6">\n  <span class="text-custom-accent font-mono-custom">1625 Elo Peak</span>\n  <h1 class="font-heading-custom">Shashikant Singh</h1>\n</div>\n\n/* Grandmaster Tactical Obsidian Theme */\n:root {\n  --bg-primary: #0D1117;\n  --accent-primary: #10B981;\n  --accent-gold: #F59E0B;\n}`,
+                simulation: `[HTML5 DOM Validation Passed]\n> Theme System initialized: 4 Dynamic Aesthetic Palettes\n> Micro-interactions loaded successfully\n> Responsive viewport checked across Desktop, Tablet & Mobile\n> Chess Rating Badge rendered at 1625 Elo`
+            },
+            'gpa-calc': {
+                title: 'Student Academic & GPA Calculator (C Language)',
+                code: `#include <stdio.h>\n\nstruct Course {\n    char name[30];\n    int credits;\n    float grade_point;\n};\n\nfloat compute_sgpa(struct Course courses[], int n) {\n    float total_points = 0;\n    int total_credits = 0;\n    for(int i = 0; i < n; i++) {\n        total_points += courses[i].credits * courses[i].grade_point;\n        total_credits += courses[i].credits;\n    }\n    return total_points / total_credits;\n}`,
+                simulation: `[GPA Calculator CLI Initialization]\n> Enter Course 1 Name: Programming in C\n> Credits: 4 | Grade Point: 10.0 (A+)\n> Enter Course 2 Name: Discrete Mathematics\n> Credits: 4 | Grade Point: 9.0 (A)\n\n> Computing Weighted SGPA...\n> Total Earned Credit Points: 76.0\n> Total Course Credits: 8\n> SEMESTER SGPA: 9.50 / 10.00`
+            }
+        };
+
+        function openTerminalModal(key) {
+            const data = projectTerminalData[key];
+            if (!data) return;
+
+            const modalTerminalContent = document.getElementById('modal-terminal-content');
+            modalTerminalContent.innerHTML = `
+                <div class="flex items-center justify-between border-b border-custom pb-3 mb-4 text-xs text-custom-muted">
+                    <span class="text-custom-accent font-bold">${data.title}</span>
+                    <span>Interactive Simulation</span>
+                </div>
+
+                <div class="mb-4">
+                    <div class="text-[10px] text-custom-muted uppercase tracking-wider mb-1">// C SOURCE CODE / STRUCTURE PREVIEW</div>
+                    <pre class="bg-custom-primary p-3 rounded border border-custom text-[11px] text-custom-main overflow-x-auto font-mono-custom"><code>${escapeHtml(data.code)}</code></pre>
+                </div>
+
+                <div class="mb-6">
+                    <div class="text-[10px] text-custom-gold uppercase tracking-wider mb-1">// LIVE SIMULATED CLI OUTPUT</div>
+                    <pre class="bg-custom-secondary p-3 rounded border border-custom text-[11px] text-emerald-400 font-mono-custom leading-relaxed">${data.simulation}</pre>
+                </div>
+
+                <div class="flex justify-end gap-3 pt-2 border-t border-custom">
+                    <button onclick="closeTerminalModal()" class="custom-btn custom-btn-primary px-4 py-2 text-xs font-mono-custom">
+                        Close Terminal
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('terminal-modal').classList.remove('hidden');
+        }
+
+        function closeTerminalModal() {
+            document.getElementById('terminal-modal').classList.add('hidden');
+        }
+
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            
+            const nameInput = document.getElementById('form-name');
+            const emailInput = document.getElementById('form-email');
+            const msgInput = document.getElementById('form-message');
+
+            let isValid = true;
+
+            // Reset errors
+            document.getElementById('err-name').classList.add('hidden');
+            document.getElementById('err-email').classList.add('hidden');
+            document.getElementById('err-message').classList.add('hidden');
+
+            if (!nameInput.value.trim()) {
+                document.getElementById('err-name').classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (!emailInput.value.trim() || !emailInput.value.includes('@')) {
+                document.getElementById('err-email').classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (!msgInput.value.trim()) {
+                document.getElementById('err-message').classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (isValid) {
+                showToast("Transmission Successful!", "Thank you for reaching out! Shashikant will respond via email shortly.");
+                document.getElementById('contact-form').reset();
+            }
+        }
+
+        function showToast(title, message) {
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-title').textContent = title;
+            document.getElementById('toast-message').textContent = message;
+
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                hideToast();
+            }, 4500);
+        }
+
+        function hideToast() {
+            const toast = document.getElementById('toast-notification');
+            toast.classList.remove('translate-y-0', 'opacity-100');
+            toast.classList.add('translate-y-24', 'opacity-0');
+        }
+    </script>
+</body>
+</html>
